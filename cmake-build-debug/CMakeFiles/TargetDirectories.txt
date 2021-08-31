@@ -1,3 +1,3 @@
-/home/alex/Desktop/Cplusplus/gemes/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/alex/Desktop/Cplusplus/gemes/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/alex/Desktop/Cplusplus/gemes/cmake-build-debug/CMakeFiles/gemes.dir
+/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles/gemes.dir
