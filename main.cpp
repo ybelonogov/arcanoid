@@ -98,7 +98,7 @@ void check_touch_brick(float &dx, float &dy, Sprite &bonus, float x, float y, fl
             bool change_flag = twice_ball;
 //            cerr<<"change"<< " " <<endl;
             if (block[i]->getBonus(dx, dy, bonus, x, y, move, twice_ball))
-                block[i]->setPosition(-100, 0);
+                block[i]->setPosition(-100, -200);
             if (twice_ball != change_flag) {
                 twice_dx = 6;
                 twice_dy = 3;
@@ -107,7 +107,7 @@ void check_touch_brick(float &dx, float &dy, Sprite &bonus, float x, float y, fl
         }
         if (FloatRect(twice_x + 3, twice_y + 3, 6, 6).intersects(block[i]->getGlobalBounds()) && twice_ball) {
             if (block[i]->getBonus(twice_dx, twice_dy, bonus, twice_x, twice_y, move, twice_ball))
-                block[i]->setPosition(-100, 0);
+                block[i]->setPosition(-100, -200);
             twice_dx = -twice_dx;
 
         }
@@ -154,7 +154,8 @@ int main() {
     sPaddle.setPosition(300, height - 10);
 //  двигать стрелочками
 //  пауза пробел
-    vector<brick *> block(1000);
+//  выход эскейп
+    vector<brick *> block(100);
     int n = 0;
     for (int i = 1; i <= 10; i++)
         for (int j = 1; j <= 10; j++) {
@@ -190,13 +191,15 @@ int main() {
     bool start = true;
     bool twice_ball = false;
     Sprite bonus;
-    auto move_block= new multi_lives(1);
+    auto move_block = new multi_lives(1);
     bonus.setTexture(t5);
     bonus.setPosition(-10000, 650);
     move_block->setTexture(t5);
     move_block->setPosition(1000, 220);
     bool move_block_active = false;
-
+//    block.push_back(move_block);
+    vector<brick *> tmp;
+    tmp.push_back(move_block);
     while (app.isOpen()) {
         Event e;
         while (app.pollEvent(e)) {
@@ -206,11 +209,17 @@ int main() {
         bonus.move(0, 1);
         x += dx;
         twice_x += twice_dx;
-        check_touch_brick(dx, dy, bonus, x, y, twice_dx, twice_dy, twice_x, twice_y, move_block_active, twice_ball, block, n);
+        check_touch_brick(dx, dy, bonus, x, y, twice_dx, twice_dy, twice_x, twice_y, move_block_active, twice_ball,
+                          block, n);
+        check_touch_brick(dx, dy, bonus, x, y, twice_dx, twice_dy, twice_x, twice_y, move_block_active, twice_ball, tmp,
+                          1);
         check_touch_ball(x, y, dx, dy, twice_x, twice_y, twice_dx, twice_dy, sBall2);
         y += dy;
         twice_y += twice_dy;
-        check_touch_brick(dy, dx, bonus, x, y, twice_dy, twice_dx, twice_x, twice_y, move_block_active, twice_ball, block, n);
+        check_touch_brick(dy, dx, bonus, x, y, twice_dy, twice_dx, twice_x, twice_y, move_block_active, twice_ball,
+                          block, n);
+        check_touch_brick(dy, dx, bonus, x, y, twice_dy, twice_dx, twice_x, twice_y, move_block_active, twice_ball, tmp,
+                          1);
         check_touch_ball(x, y, dx, dy, twice_x, twice_y, twice_dx, twice_dy, sBall2);
         check_line(x, y, dx, dy, width, height, app);
         check_line(twice_x, twice_y, twice_dx, twice_dy, width, height, app);
@@ -235,15 +244,11 @@ int main() {
         app.draw(bonus);
         check_bonus(bonus, x, y, twice_ball);
         check_bonus(bonus, twice_x, twice_y, twice_ball);
-        if (move_block->getGlobalBounds().left>width){
-            move_block->setPosition(-43, 220);
-        }
         if (move_block_active) {
-            move_block->move(0.5,0);
+            move_block->move(0.5, 0);
             app.draw(*move_block);
-//            vector <>
-//            check_touch_brick(dx, dy, bonus, x, y, twice_dx, twice_dy, twice_x, twice_y, move_block_active, twice_ball, block, n);
-//            check_touch_brick(dy, dx, bonus, x, y, twice_dy, twice_dx, twice_x, twice_y, move_block_active, twice_ball, block, n);
+            if (move_block->getGlobalBounds().left > width)
+                move_block->setPosition(-43, 220);
         }
         if (twice_ball) {
             sBall2.setPosition(twice_x, twice_y);
