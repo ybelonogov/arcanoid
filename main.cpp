@@ -23,7 +23,9 @@ public:
 class can_give_birth : public brick {
 public:
     bool getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, int &move, bool &twice_ball) {
-        bonus.setPosition(x, y);
+        if (bonus.getGlobalBounds().top>650)
+//            cerr<< <<endl;
+            bonus.setPosition(x, y);
         return true;
     }
 };
@@ -32,8 +34,8 @@ public:
 class speed_up : public brick {
 public:
     bool getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, int &move, bool &twice_ball) {
-        dx = dx * 1.5;
-        dy = dy * 1.5;
+        dx = dx * 1.2;
+        dy = dy * 1.2;
         return true;
     }
 };
@@ -89,33 +91,47 @@ void check_touch_palde(float x,float y, float &dx,float &dy,Sprite sPaddle) {
     }
 }
 
-void
-check_touch_brick(float &dx, float &dy, Sprite &bonus, float x, float y,float &twice_dx, float &twice_dy,
-                  float twice_x, float twice_y, int &move, bool &twice_ball, brick *block, int n) {
+void check_touch_brick(float &dx, float &dy, Sprite &bonus, float x, float y,float &twice_dx, float &twice_dy,
+                  float twice_x, float twice_y, int &move, bool &twice_ball, vector<brick*>& block , int n) {
     for (int i = 0; i < n; i++) {
-        if (FloatRect(x + 3, y + 3, 6, 6).intersects(block[i].getGlobalBounds())) {
+        if (FloatRect(x + 3, y + 3, 6, 6).intersects(block[i]->getGlobalBounds())) {
             bool change_flag = twice_ball;
-            if (block[i].getBonus(dx, dy, bonus, x, y, move, twice_ball))
-                block[i].setPosition(-100, 0);
+//            cerr<<"change"<< " " <<endl;
+            if (block[i]->getBonus(dx, dy, bonus, x, y, move, twice_ball))
+                block[i]->setPosition(-100, 0);
             if (twice_ball != change_flag) {
                 twice_dx = 6;
                 twice_dy = 3;
             }
             dx = -dx;
         }
-        if (FloatRect(twice_x + 3, twice_y + 3, 6, 6).intersects(block[i].getGlobalBounds())) {
-            if (block[i].getBonus(twice_dx, twice_dy, bonus, twice_x, twice_y, move, twice_ball))
-                block[i].setPosition(-100, 0);
+        if (FloatRect(twice_x + 3, twice_y + 3, 6, 6).intersects(block[i]->getGlobalBounds()) && twice_ball) {
+            if (block[i]->getBonus(twice_dx, twice_dy, bonus, twice_x, twice_y, move, twice_ball))
+                block[i]->setPosition(-100, 0);
             twice_dx = -twice_dx;
+
         }
     }
 }
 
-void check_touch_ball (float x,float y, float &dx,float &dy,Sprite twice_ball, float &twice_dx,float &twice_dy) {
+void check_touch_ball (float x,float y, float &dx,float &dy,float twice_x,float twice_y, float &twice_dx,float &twice_dy,Sprite twice_ball) {
         if (FloatRect(x, y, 3, 3).intersects(twice_ball.getGlobalBounds())) {
             dy = -dy;
             twice_dy=-twice_dy;
         }
+}
+void check_line (float x,float y,float &dx,float &dy,int width,int height,RenderWindow &app){
+    if (x < 0 || x > width) dx = -dx;
+    if (y < 0) dy = -dy;
+    if (y > height) app.close();
+//    if (y > height) dy = -dy;
+}
+void check_bonus (Sprite &bonus, float x,float y,bool &twice_ball){
+    if (FloatRect(x, y, 4, 4).intersects(bonus.getGlobalBounds()) && y>250) {
+        bonus.setPosition(-10000, 1650);
+        twice_ball=false;
+    }
+
 }
 
 int main() {
@@ -133,36 +149,34 @@ int main() {
     t5.loadFromFile("/home/alex/Desktop/Cplusplus/arcanoid/images/block01.png");
     Sprite sBackground(t2), sBall(t3), sPaddle(t4), sBonus(t5), sBall2(t3);
     sPaddle.setPosition(300, height - 10);
-//  умные указатели для блоков с бонусами
-//  бонусы: ускорение, неуязвимость
 //  двигать стрелочками
 //  пауза пробел
-//    brick *block[1000];
+
     vector <brick*> block(1000);
     int n = 0;
     for (int i = 1; i <= 10; i++)
         for (int j = 1; j <= 10; j++) {
-            block[n] = new make_ball;
-//            int type= rand()%6;
-//            if (type==0){
-//                block[n]=new unkillable;
-//            }
-//            if (type==1){
-//                block[n]=new speed_up;
-//            }
-//            if (type==2){
-//                block[n]=new can_give_birth;
-//            }
-//            if (type==3){
-//                block[n]=new multi_lives(1+rand()%6);
-//            }
-//            if (type==4){
-//                block[n]=new make_move;
-//            }
-//            if (type==5){
-//                block[n]=new make_ball;
-//            }
-//          сдннлать шаред
+//            block[n] = new multi_lives(1);
+            int type= rand()%6;
+            if (type==0){
+                block[n]=new unkillable;
+            }
+            if (type==1){
+                block[n]=new speed_up;
+            }
+            if (type==2){
+                block[n]=new can_give_birth;
+            }
+            if (type==3){
+                block[n]=new multi_lives(1+rand()%6);
+            }
+            if (type==4){
+                block[n]=new make_move;
+            }
+            if (type==5){
+                block[n]=new make_ball;
+            }
+//          сдннлать шаред//ненадо
 
             block[n]->setTexture(t1);
             block[n]->setPosition(i * 43, j * 20);
@@ -173,10 +187,10 @@ int main() {
     float stop_dx = 0, stop_dy = 0, stop_plade_speed = 0;
     float x = 300, y = 300;
     bool start = true;
-    Sprite twice_ball = false;
+    bool twice_ball = false;
     Sprite bonus;
     bonus.setTexture(t5);
-    bonus.setPosition(-100, 0);
+    bonus.setPosition(-10000, 650);
     int move_blocks = 0;
     while (app.isOpen()) {
         Event e;
@@ -187,54 +201,15 @@ int main() {
         bonus.move(0, 1);
 
         x += dx;
-        twice_x += dx;
-//        (float &dx, float &dy, Sprite &bonus, float x, float y, float &twice_dx, float &twice_dy,
-//                float twice_x, float twice_y, int &move, bool &twice_ball, brick *block, int n)
-        check_touch_bricks(dx, dy, bonus, x, y,twice_dx,twice_dy,twice_x,twice_y, move_blocks, twice_ball,block,n);
-        check_touch_ball(x,y,dx,dy,twice_ball,twice_dx,twice_dy);
-        //        for (int i = 0; i < n; i++) {
-//            if (FloatRect(x + 3, y + 3, 6, 6).intersects(block[i]->getGlobalBounds())) {
-//                bool change_flag = twice_ball;
-//                if (block[i]->getBonus(dx, dy, bonus, x, y, move_blocks, twice_ball))
-//                    block[i]->setPosition(-100, 0);
-//                if (twice_ball != change_flag) {
-//                    twice_dx = 6;
-//                    twice_dy = 3;
-//                }
-//                dx = -dx;
-//            }
-//            if (FloatRect(twice_x + 3, twice_y + 3, 6, 6).intersects(block[i]->getGlobalBounds())) {
-//                if (block[i]->getBonus(twice_dx, twice_dy, bonus, twice_x, twice_y, move_blocks, twice_ball))
-//                    block[i]->setPosition(-100, 0);
-//                twice_dx = -twice_dx;
-//            }
-//        }
-
+        twice_x += twice_dx;
+        check_touch_brick(dx, dy, bonus, x, y,twice_dx,twice_dy,twice_x,twice_y, move_blocks, twice_ball,block,n);
+        check_touch_ball(x,y,dx,dy,twice_x,twice_y,twice_dx,twice_dy,sBall2);
         y += dy;
         twice_y += twice_dy;
-        check_touch_bricks(dx, dy, bonus, x, y,twice_dx,twice_dy,twice_x,twice_y, move_blocks, twice_ball,block,n);
-//        for (int i = 0; i < n; i++) {
-//            if (FloatRect(x + 3, y + 3, 6, 6).intersects(block[i]->getGlobalBounds())) {
-//                bool change_flag = twice_ball;
-//                if (block[i]->getBonus(dx, dy, bonus, x, y, move_blocks, twice_ball))
-//                    block[i]->setPosition(-100, 0);
-//                if (twice_ball != change_flag) {
-//                    twice_dx = 6;
-//                    twice_dy = 3;
-//                }
-//                dy = -dy;
-//            }
-//            if (FloatRect(twice_x + 3, twice_y + 3, 6, 6).intersects(block[i]->getGlobalBounds())) {
-//                if (block[i]->getBonus(twice_dx, twice_dy, bonus, twice_x, twice_y, move_blocks, twice_ball))
-//                    block[i]->setPosition(-100, 0);
-//                twice_dy = -twice_dy;
-//            }
-//        }
-
-
-        if (x < 0 || x > width) dx = -dx;
-        if (y < 0) dy = -dy;
-        if (y > height) app.close();
+        check_touch_brick(dy, dx , bonus, x, y,twice_dy,twice_dx,twice_x,twice_y, move_blocks, twice_ball,block,n);
+        check_touch_ball(x,y,dx,dy,twice_x,twice_y,twice_dx,twice_dy,sBall2);
+        check_line(x,y,dx,dy,width,height,app);
+        check_line(twice_x,twice_y,twice_dx,twice_dy,width,height,app);
         if (Keyboard::isKeyPressed(Keyboard::Right)) sPaddle.move(plade_speed, 0);
         if (Keyboard::isKeyPressed(Keyboard::Left)) sPaddle.move(-plade_speed, 0);
         if (Keyboard::isKeyPressed(Keyboard::Escape)) app.close();
@@ -248,30 +223,23 @@ int main() {
             swap(plade_speed, stop_plade_speed);
         }
         check_touch_palde(x,y,dx,dy,sPaddle);
-//        if (FloatRect(x, y, 12, 12).intersects(sPaddle.getGlobalBounds())) {
-//            dy = -(rand() % 5 + 2);
-//            if (dx != 6) {
-//                dx = 6;
-//            }
-//        }
-        check_touch_palde(x,y,dx,dy,sPaddle);
-//        if (FloatRect(twice_x, twice_y, 12, 12).intersects(sPaddle.getGlobalBounds())) {
-//            twice_dy = -(rand() % 5 + 2);
-//            if (twice_dx != 6) {
-//                twice_dx = 6;
-//            }
-//        }
-
+        check_touch_palde(twice_x,twice_y,twice_dx,twice_dy,sPaddle);
         sBall.setPosition(x, y);
-
         app.clear();
         app.draw(sBackground);
         app.draw(sBall);
         app.draw(sPaddle);
         app.draw(bonus);
+        check_bonus(bonus,x,y,twice_ball);
+        check_bonus(bonus,twice_x,twice_y,twice_ball);
         if (twice_ball) {
             sBall2.setPosition(twice_x, twice_y);
             app.draw(sBall2);
+        } else{
+            twice_x=260;
+            twice_y=250;
+            twice_dx=0;
+            twice_dy=0;
         }
         for (int i = 0; i < n; i++)
             app.draw(*block[i]);
