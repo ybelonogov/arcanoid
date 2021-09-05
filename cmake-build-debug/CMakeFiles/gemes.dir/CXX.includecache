@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/alex/Desktop/Cplusplus/arcanoid/brick.h
+SFML/Graphics/Sprite.hpp
+-
+
+/home/alex/Desktop/Cplusplus/arcanoid/brick_types.h
+brick.h
+/home/alex/Desktop/Cplusplus/arcanoid/brick.h
+
+/home/alex/Desktop/Cplusplus/arcanoid/check.h
+SFML/Graphics.hpp
+-
+brick.h
+/home/alex/Desktop/Cplusplus/arcanoid/brick.h
+
 /home/alex/Desktop/Cplusplus/arcanoid/main.cpp
 iostream
 -
@@ -15,4 +29,10 @@ bits/stdc++.h
 -
 time.h
 -
+brick.h
+/home/alex/Desktop/Cplusplus/arcanoid/brick.h
+brick_types.h
+/home/alex/Desktop/Cplusplus/arcanoid/brick_types.h
+check.h
+/home/alex/Desktop/Cplusplus/arcanoid/check.h
 

@@ -82,6 +82,24 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/alex/Desktop/Cplusplus/arcanoid/brick.cpp">
+			<Option target="gemes"/>
+		</Unit>
+		<Unit filename="/home/alex/Desktop/Cplusplus/arcanoid/brick.h">
+			<Option target="gemes"/>
+		</Unit>
+		<Unit filename="/home/alex/Desktop/Cplusplus/arcanoid/brick_types.cpp">
+			<Option target="gemes"/>
+		</Unit>
+		<Unit filename="/home/alex/Desktop/Cplusplus/arcanoid/brick_types.h">
+			<Option target="gemes"/>
+		</Unit>
+		<Unit filename="/home/alex/Desktop/Cplusplus/arcanoid/check.cpp">
+			<Option target="gemes"/>
+		</Unit>
+		<Unit filename="/home/alex/Desktop/Cplusplus/arcanoid/check.h">
+			<Option target="gemes"/>
+		</Unit>
 		<Unit filename="/home/alex/Desktop/Cplusplus/arcanoid/main.cpp">
 			<Option target="gemes"/>
 		</Unit>
