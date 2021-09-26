@@ -8,9 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/alex/Desktop/Cplusplus/arcanoid/brick.cpp" "/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles/gemes.dir/brick.cpp.o"
-  "/home/alex/Desktop/Cplusplus/arcanoid/brick_types.cpp" "/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles/gemes.dir/brick_types.cpp.o"
+  "/home/alex/Desktop/Cplusplus/arcanoid/Brick.cpp" "/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles/gemes.dir/Brick.cpp.o"
+  "/home/alex/Desktop/Cplusplus/arcanoid/BrickTypes.cpp" "/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles/gemes.dir/BrickTypes.cpp.o"
   "/home/alex/Desktop/Cplusplus/arcanoid/check.cpp" "/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles/gemes.dir/check.cpp.o"
+  "/home/alex/Desktop/Cplusplus/arcanoid/game.cpp" "/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles/gemes.dir/game.cpp.o"
   "/home/alex/Desktop/Cplusplus/arcanoid/main.cpp" "/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles/gemes.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

@@ -79,31 +79,31 @@ CMakeFiles/gemes.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gemes.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Desktop/Cplusplus/arcanoid/main.cpp -o CMakeFiles/gemes.dir/main.cpp.s
 
-CMakeFiles/gemes.dir/brick.cpp.o: CMakeFiles/gemes.dir/flags.make
-CMakeFiles/gemes.dir/brick.cpp.o: ../brick.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gemes.dir/brick.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gemes.dir/brick.cpp.o -c /home/alex/Desktop/Cplusplus/arcanoid/brick.cpp
+CMakeFiles/gemes.dir/Brick.cpp.o: CMakeFiles/gemes.dir/flags.make
+CMakeFiles/gemes.dir/Brick.cpp.o: ../Brick.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gemes.dir/Brick.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gemes.dir/Brick.cpp.o -c /home/alex/Desktop/Cplusplus/arcanoid/Brick.cpp
 
-CMakeFiles/gemes.dir/brick.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gemes.dir/brick.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/Desktop/Cplusplus/arcanoid/brick.cpp > CMakeFiles/gemes.dir/brick.cpp.i
+CMakeFiles/gemes.dir/Brick.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gemes.dir/Brick.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/Desktop/Cplusplus/arcanoid/Brick.cpp > CMakeFiles/gemes.dir/Brick.cpp.i
 
-CMakeFiles/gemes.dir/brick.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gemes.dir/brick.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Desktop/Cplusplus/arcanoid/brick.cpp -o CMakeFiles/gemes.dir/brick.cpp.s
+CMakeFiles/gemes.dir/Brick.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gemes.dir/Brick.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Desktop/Cplusplus/arcanoid/Brick.cpp -o CMakeFiles/gemes.dir/Brick.cpp.s
 
-CMakeFiles/gemes.dir/brick_types.cpp.o: CMakeFiles/gemes.dir/flags.make
-CMakeFiles/gemes.dir/brick_types.cpp.o: ../brick_types.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/gemes.dir/brick_types.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gemes.dir/brick_types.cpp.o -c /home/alex/Desktop/Cplusplus/arcanoid/brick_types.cpp
+CMakeFiles/gemes.dir/BrickTypes.cpp.o: CMakeFiles/gemes.dir/flags.make
+CMakeFiles/gemes.dir/BrickTypes.cpp.o: ../BrickTypes.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/gemes.dir/BrickTypes.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gemes.dir/BrickTypes.cpp.o -c /home/alex/Desktop/Cplusplus/arcanoid/BrickTypes.cpp
 
-CMakeFiles/gemes.dir/brick_types.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gemes.dir/brick_types.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/Desktop/Cplusplus/arcanoid/brick_types.cpp > CMakeFiles/gemes.dir/brick_types.cpp.i
+CMakeFiles/gemes.dir/BrickTypes.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gemes.dir/BrickTypes.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/Desktop/Cplusplus/arcanoid/BrickTypes.cpp > CMakeFiles/gemes.dir/BrickTypes.cpp.i
 
-CMakeFiles/gemes.dir/brick_types.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gemes.dir/brick_types.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Desktop/Cplusplus/arcanoid/brick_types.cpp -o CMakeFiles/gemes.dir/brick_types.cpp.s
+CMakeFiles/gemes.dir/BrickTypes.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gemes.dir/BrickTypes.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Desktop/Cplusplus/arcanoid/BrickTypes.cpp -o CMakeFiles/gemes.dir/BrickTypes.cpp.s
 
 CMakeFiles/gemes.dir/check.cpp.o: CMakeFiles/gemes.dir/flags.make
 CMakeFiles/gemes.dir/check.cpp.o: ../check.cpp
@@ -118,27 +118,42 @@ CMakeFiles/gemes.dir/check.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gemes.dir/check.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Desktop/Cplusplus/arcanoid/check.cpp -o CMakeFiles/gemes.dir/check.cpp.s
 
+CMakeFiles/gemes.dir/game.cpp.o: CMakeFiles/gemes.dir/flags.make
+CMakeFiles/gemes.dir/game.cpp.o: ../game.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/gemes.dir/game.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gemes.dir/game.cpp.o -c /home/alex/Desktop/Cplusplus/arcanoid/game.cpp
+
+CMakeFiles/gemes.dir/game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gemes.dir/game.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/Desktop/Cplusplus/arcanoid/game.cpp > CMakeFiles/gemes.dir/game.cpp.i
+
+CMakeFiles/gemes.dir/game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gemes.dir/game.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Desktop/Cplusplus/arcanoid/game.cpp -o CMakeFiles/gemes.dir/game.cpp.s
+
 # Object files for target gemes
 gemes_OBJECTS = \
 "CMakeFiles/gemes.dir/main.cpp.o" \
-"CMakeFiles/gemes.dir/brick.cpp.o" \
-"CMakeFiles/gemes.dir/brick_types.cpp.o" \
-"CMakeFiles/gemes.dir/check.cpp.o"
+"CMakeFiles/gemes.dir/Brick.cpp.o" \
+"CMakeFiles/gemes.dir/BrickTypes.cpp.o" \
+"CMakeFiles/gemes.dir/check.cpp.o" \
+"CMakeFiles/gemes.dir/game.cpp.o"
 
 # External object files for target gemes
 gemes_EXTERNAL_OBJECTS =
 
 gemes: CMakeFiles/gemes.dir/main.cpp.o
-gemes: CMakeFiles/gemes.dir/brick.cpp.o
-gemes: CMakeFiles/gemes.dir/brick_types.cpp.o
+gemes: CMakeFiles/gemes.dir/Brick.cpp.o
+gemes: CMakeFiles/gemes.dir/BrickTypes.cpp.o
 gemes: CMakeFiles/gemes.dir/check.cpp.o
+gemes: CMakeFiles/gemes.dir/game.cpp.o
 gemes: CMakeFiles/gemes.dir/build.make
 gemes: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
 gemes: /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1
 gemes: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
 gemes: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
 gemes: CMakeFiles/gemes.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable gemes"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alex/Desktop/Cplusplus/arcanoid/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable gemes"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gemes.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -4,7 +4,7 @@
 
 #include "check.h"
 
-void check_touch_paddle(float x, float y, float &dx, float &dy, Sprite sPaddle) {
+void checkTouchPaddle(float x, float y, float &dx, float &dy, Sprite sPaddle) {
     if (FloatRect(x, y, 12, 12).intersects(sPaddle.getGlobalBounds())) {
         dy = -(rand() % 5 + 2);
         if (dx != 6) {
@@ -13,8 +13,8 @@ void check_touch_paddle(float x, float y, float &dx, float &dy, Sprite sPaddle) 
     }
 }
 
-void check_touch_brick(float &dx, float &dy, Sprite &bonus, float x, float y, float &twice_dx, float &twice_dy,
-                       float twice_x, float twice_y, bool &move, bool &twice_ball, std::vector<brick *> &block, int n) {
+void checkTouchBrick(float &dx, float &dy, Sprite &bonus, float x, float y, float &twice_dx, float &twice_dy,
+                     float twice_x, float twice_y, bool &move, bool &twice_ball, std::vector<Brick *> &block) {
     for (int i = 0; i < block.size(); i++) {
         if (FloatRect(x + 3, y + 3, 6, 6).intersects(block[i]->getGlobalBounds())) {
             bool change_flag = twice_ball;
@@ -37,22 +37,22 @@ void check_touch_brick(float &dx, float &dy, Sprite &bonus, float x, float y, fl
 }
 
 void
-check_touch_ball(float x, float y, float &dx, float &dy, float twice_x, float twice_y, float &twice_dx, float &twice_dy,
-                 Sprite twice_ball) {
+checkTouchBall(float x, float y, float &dx, float &dy, float twice_x, float twice_y, float &twice_dx, float &twice_dy,
+               Sprite twice_ball) {
     if (FloatRect(x, y, 3, 3).intersects(twice_ball.getGlobalBounds())) {
         dy = -dy;
         twice_dy = -twice_dy;
     }
 }
 
-void check_line(float x, float y, float &dx, float &dy, int width, int height, RenderWindow &app) {
+void checkLine(float x, float y, float &dx, float &dy, int width, int height, RenderWindow &app) {
     if (x < 0 || x > width) dx = -dx;
     if (y < 0) dy = -dy;
     if (y > height) app.close();
 //    if (y > height) dy = -dy;
 }
 
-void check_bonus(Sprite &bonus, float x, float y, bool &twice_ball) {
+void checkBonus(Sprite &bonus, float x, float y, bool &twice_ball) {
     if (FloatRect(x, y, 4, 4).intersects(bonus.getGlobalBounds()) && y > 250) {
         bonus.setPosition(-10000, 1650);
         twice_ball = false;

@@ -129,53 +129,53 @@ gemes/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/build
 .PHONY : gemes/fast
 
-brick.o: brick.cpp.o
-.PHONY : brick.o
+Brick.o: Brick.cpp.o
+.PHONY : Brick.o
 
 # target to build an object file
-brick.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/brick.cpp.o
-.PHONY : brick.cpp.o
+Brick.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/Brick.cpp.o
+.PHONY : Brick.cpp.o
 
-brick.i: brick.cpp.i
-.PHONY : brick.i
+Brick.i: Brick.cpp.i
+.PHONY : Brick.i
 
 # target to preprocess a source file
-brick.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/brick.cpp.i
-.PHONY : brick.cpp.i
+Brick.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/Brick.cpp.i
+.PHONY : Brick.cpp.i
 
-brick.s: brick.cpp.s
-.PHONY : brick.s
+Brick.s: Brick.cpp.s
+.PHONY : Brick.s
 
 # target to generate assembly for a file
-brick.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/brick.cpp.s
-.PHONY : brick.cpp.s
+Brick.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/Brick.cpp.s
+.PHONY : Brick.cpp.s
 
-brick_types.o: brick_types.cpp.o
-.PHONY : brick_types.o
+BrickTypes.o: BrickTypes.cpp.o
+.PHONY : BrickTypes.o
 
 # target to build an object file
-brick_types.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/brick_types.cpp.o
-.PHONY : brick_types.cpp.o
+BrickTypes.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/BrickTypes.cpp.o
+.PHONY : BrickTypes.cpp.o
 
-brick_types.i: brick_types.cpp.i
-.PHONY : brick_types.i
+BrickTypes.i: BrickTypes.cpp.i
+.PHONY : BrickTypes.i
 
 # target to preprocess a source file
-brick_types.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/brick_types.cpp.i
-.PHONY : brick_types.cpp.i
+BrickTypes.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/BrickTypes.cpp.i
+.PHONY : BrickTypes.cpp.i
 
-brick_types.s: brick_types.cpp.s
-.PHONY : brick_types.s
+BrickTypes.s: BrickTypes.cpp.s
+.PHONY : BrickTypes.s
 
 # target to generate assembly for a file
-brick_types.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/brick_types.cpp.s
-.PHONY : brick_types.cpp.s
+BrickTypes.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/BrickTypes.cpp.s
+.PHONY : BrickTypes.cpp.s
 
 check.o: check.cpp.o
 .PHONY : check.o
@@ -200,6 +200,30 @@ check.s: check.cpp.s
 check.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/check.cpp.s
 .PHONY : check.cpp.s
+
+game.o: game.cpp.o
+.PHONY : game.o
+
+# target to build an object file
+game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/game.cpp.o
+.PHONY : game.cpp.o
+
+game.i: game.cpp.i
+.PHONY : game.i
+
+# target to preprocess a source file
+game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/game.cpp.i
+.PHONY : game.cpp.i
+
+game.s: game.cpp.s
+.PHONY : game.s
+
+# target to generate assembly for a file
+game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gemes.dir/build.make CMakeFiles/gemes.dir/game.cpp.s
+.PHONY : game.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -234,15 +258,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... gemes"
-	@echo "... brick.o"
-	@echo "... brick.i"
-	@echo "... brick.s"
-	@echo "... brick_types.o"
-	@echo "... brick_types.i"
-	@echo "... brick_types.s"
+	@echo "... Brick.o"
+	@echo "... Brick.i"
+	@echo "... Brick.s"
+	@echo "... BrickTypes.o"
+	@echo "... BrickTypes.i"
+	@echo "... BrickTypes.s"
 	@echo "... check.o"
 	@echo "... check.i"
 	@echo "... check.s"
+	@echo "... game.o"
+	@echo "... game.i"
+	@echo "... game.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -8,10 +8,10 @@
 #include <SFML/Graphics/Sprite.hpp>
 
 using namespace sf;
-
-class brick: public Sprite{
+using namespace std;
+class Brick: public Sprite{
 public:
-    virtual bool getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twice_ball) = 0;
+    virtual bool getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall) = 0;
 };
 
 
