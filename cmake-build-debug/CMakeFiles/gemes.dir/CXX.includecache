@@ -25,8 +25,12 @@ game.h
 /home/alex/Desktop/Cplusplus/arcanoid/game.h
 
 /home/alex/Desktop/Cplusplus/arcanoid/game.h
+memory
+-
 check.h
 /home/alex/Desktop/Cplusplus/arcanoid/check.h
+random
+/home/alex/Desktop/Cplusplus/arcanoid/random
 
 /home/alex/Desktop/Cplusplus/arcanoid/main.cpp
 iostream

@@ -5,13 +5,13 @@
 #include "game.h"
 
 void
-game::loadTexture()  {
+game::loadTexture() {
 //    Texture ball, block, paddle, background;
     block.loadFromFile("/home/alex/Desktop/Cplusplus/arcanoid/images/block01.png");
     background.loadFromFile("/home/alex/Desktop/Cplusplus/arcanoid/images/background.jpg");
     ball.loadFromFile("/home/alex/Desktop/Cplusplus/arcanoid/images/ball.png");
     paddle.loadFromFile("/home/alex/Desktop/Cplusplus/arcanoid/images/paddle.png");
-   //    t1.loadFromFile("block01.png");
+    //    t1.loadFromFile("block01.png");
 //    t2.loadFromFile("background.jpg");
 //    t3.loadFromFile("images/ball.png");
 //    t4.loadFromFile("images/paddle.png");
@@ -30,24 +30,24 @@ void game::generateField() {
     for (int i = 1; i <= 10; i++)
         for (int j = 1; j <= 10; j++) {
 //            blocks[n] = new MultiLives(1);
-            int type = rand() % 6;
+            int type = random() % 6;
             if (type == 0) {
-                blocks.push_back( new Unkillable);
+                blocks.push_back(make_shared<Unkillable>());
             }
             if (type == 1) {
-                blocks.push_back( new SpeedUp);
+                blocks.push_back(make_shared<SpeedUp>());
             }
             if (type == 2) {
-                blocks.push_back( new CanGiveBirth);
+                blocks.push_back(make_shared<CanGiveBirth>());
             }
             if (type == 3) {
-                blocks.push_back( new MultiLives(1 + rand() % 6));
+                blocks.push_back(make_shared<MultiLives>(random()%6 +1));
             }
             if (type == 4) {
-                blocks.push_back( new MakeMove);
+                blocks.push_back(make_shared<MakeMove>());
             }
             if (type == 5) {
-                blocks.push_back( new MakeBall);
+                blocks.push_back(make_shared<MakeBall>());
             }
             blocks[n]->setTexture(block);
             blocks[n]->setPosition(i * 43, j * 20);
@@ -63,7 +63,7 @@ void game::generateField() {
 void game::play() {
     RenderWindow app(VideoMode(WIGHT, HEIGHT), "arkanoid");
     app.setFramerateLimit(60);
-    vector<Brick *> tmp;
+    std::vector<std::shared_ptr<Brick>> tmp;
     tmp.push_back(moveBlock);
     while (app.isOpen()) {
         Event e;

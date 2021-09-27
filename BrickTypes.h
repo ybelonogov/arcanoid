@@ -8,7 +8,6 @@
 #include "Brick.h"
 
 
-
 //1) Неразрушаемые. От них мяч просто отскакивает.
 class Unkillable : public Brick {
 public:
@@ -33,7 +32,10 @@ private:
     int lives;
 public:
     MultiLives(int hp);
+
     bool getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall);
+
+    MultiLives();
 };
 
 

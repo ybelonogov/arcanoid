@@ -10,21 +10,18 @@
 
 using namespace sf;
 
-class check {
-
-};
 
 void checkTouchPaddle(float x, float y, float &dx, float &dy, Sprite sPaddle);
 
-void checkTouchBrick(float &dx, float &dy, Sprite &bonus, float x, float y, float &twice_dx, float &twice_dy,
-                     float twice_x, float twice_y, bool &move, bool &twice_ball, std::vector<Brick *> &block);
+void checkTouchBrick(float &dx, float &dy, Sprite &bonus, float x, float y, float &twiceDx, float &twiceDy,
+                     float twiceX, float twiceY, bool &move, bool &twiceBall, std::vector<std::shared_ptr<Brick>>);
 
 void
-checkTouchBall(float x, float y, float &dx, float &dy, float twice_x, float twice_y, float &twice_dx, float &twice_dy,
-               Sprite twice_ball);
+checkTouchBall(float x, float y, float &dx, float &dy, float twiceX, float twiceY, float &twiceDx, float &twiceDy,
+               Sprite twiceBall);
 
 void checkLine(float x, float y, float &dx, float &dy, int width, int height, RenderWindow &app);
 
-void checkBonus(Sprite &bonus, float x, float y, bool &twice_ball);
+void checkBonus(Sprite &bonus, float x, float y, bool &twiceBall);
 
 #endif //ARCANOID_CHECK_H
