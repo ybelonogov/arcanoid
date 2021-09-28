@@ -11,17 +11,17 @@
 using namespace sf;
 
 
-void checkTouchPaddle(float x, float y, float &dx, float &dy, Sprite sPaddle);
+void checkTouchPaddle(BallInfo &ball, Sprite sPaddle);
 
-void checkTouchBrick(float &dx, float &dy, Sprite &bonus, float x, float y, float &twiceDx, float &twiceDy,
-                     float twiceX, float twiceY, bool &move, bool &twiceBall, std::vector<std::shared_ptr<Brick>>);
+void checkTouchBrick(BallInfo &firstBall, Sprite &bonus, BallInfo &secondBall,bool &move, bool &twiceBall,
+                     std::vector<std::shared_ptr<Brick>> block);
 
 void
-checkTouchBall(float x, float y, float &dx, float &dy, float twiceX, float twiceY, float &twiceDx, float &twiceDy,
-               Sprite twiceBall);
+checkTouchBall(BallInfo &firstBall, BallInfo &SecondBall,
+              Sprite twiceBall);
 
-void checkLine(float x, float y, float &dx, float &dy, int width, int height, RenderWindow &app);
+void checkLine(BallInfo &ball, int width, int height, RenderWindow &app);
 
-void checkBonus(Sprite &bonus, float x, float y, bool &twiceBall);
+void checkBonus(Sprite &bonus, BallInfo &ball, bool &twiceBall);
 
 #endif //ARCANOID_CHECK_H

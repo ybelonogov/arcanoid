@@ -11,19 +11,19 @@
 //1) Неразрушаемые. От них мяч просто отскакивает.
 class Unkillable : public Brick {
 public:
-    bool getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twice_ball);
+    bool getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall) ;
 };
 
 //2) Блоки могут быть со спрятанными бонусами: при попадании вертикально вниз падает бонус
 class CanGiveBirth : public Brick {
 public:
-    bool getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twice_ball);
+    bool getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall) ;
 };
 
 //3) Блоки, увеличивающие скорость шарика при столкновении
 class SpeedUp : public Brick {
 public:
-    bool getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall);
+    bool getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall) ;
 };
 
 //4) Блоки имеют уровень здоровья = число попаданий, чтобы блок исчез. За каждое попадание +1 очко игроку, -1 очко здоровья блоку.
@@ -33,9 +33,8 @@ private:
 public:
     MultiLives(int hp);
 
-    bool getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall);
+    bool getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall) ;
 
-    MultiLives();
 };
 
 
@@ -43,14 +42,14 @@ public:
 //
 class MakeMove : public Brick {
 public:
-    bool getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall);
+    bool getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall) ;
 };
 
 
 //7) Бонус: появляется второй шарик, способный оттолкнуться и от первого, и от блоков/стенок
 class MakeBall : public Brick {
 public:
-    bool getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall);
+    bool getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall);
 };
 
 

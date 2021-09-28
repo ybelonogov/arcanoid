@@ -4,25 +4,25 @@
 
 #include "BrickTypes.h"
 
-bool Unkillable::getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall) {
+bool Unkillable::getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall)  {
     return false;
 }
 
-bool CanGiveBirth::getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall) {
+bool CanGiveBirth::getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall)  {
     if (bonus.getGlobalBounds().top > 650)
-        bonus.setPosition(x, y);
+        bonus.setPosition(ball.x, ball.y);
     return true;
 }
 
-bool SpeedUp::getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall) {
-    dx = dx * 1.2;
-    dy = dy * 1.2;
+bool SpeedUp::getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall)  {
+    ball.dx = ball.dx * 1.2;
+    ball.dy = ball.dy * 1.2;
     return true;
 }
 
 MultiLives::MultiLives(int hp) { lives = hp; };
 
-bool MultiLives::getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall) {
+bool MultiLives::getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall)  {
 
     lives--;
     if (lives == 0) {
@@ -31,12 +31,12 @@ bool MultiLives::getBonus(float &dx, float &dy, Sprite &bonus, float x, float y,
     return false;
 }
 
-bool MakeMove::getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall) {
+bool MakeMove::getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall)  {
     move += 1;
     return true;
 }
 
-bool MakeBall::getBonus(float &dx, float &dy, Sprite &bonus, float x, float y, bool &move, bool &twiceBall) {
+bool MakeBall::getBonus(BallInfo &ball, Sprite &bonus, bool &move, bool &twiceBall)  {
     twiceBall = true;
     return true;
 }

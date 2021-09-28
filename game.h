@@ -8,6 +8,7 @@
 #include <memory>
 #include "check.h"
 #include "random"
+
 class game {
 private:
     const int WIGHT = 520, HEIGHT = 650;
@@ -18,9 +19,10 @@ private:
             stopTwiceDy = 0, stopPladeSpeed = 0, x = 300, y = 300;
     bool start = true;
     bool twiceBall = false;
+
     Sprite bonus, sPaddle, sBall, sBall2, sBackground;
     std::shared_ptr<Brick> moveBlock = make_shared<MultiLives>  (1);
-    bool move_block_active = false;
+    bool moveBlockActive = false;
 
 
 public:

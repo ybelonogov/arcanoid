@@ -63,8 +63,10 @@ void game::generateField() {
 void game::play() {
     RenderWindow app(VideoMode(WIGHT, HEIGHT), "arkanoid");
     app.setFramerateLimit(60);
-    std::vector<std::shared_ptr<Brick>> tmp;
-    tmp.push_back(moveBlock);
+    std::vector<std::shared_ptr<Brick>> moveBlocks;
+    moveBlocks.push_back(moveBlock);
+    BallInfo firstBall(x,y,dx,dy);
+    BallInfo secondBall(twiceX,twiceY,twiceDx,twiceDy);
     while (app.isOpen()) {
         Event e;
         while (app.pollEvent(e)) {
@@ -72,55 +74,59 @@ void game::play() {
                 app.close();
         }
         bonus.move(0, 1);
-        x += dx;
-        twiceX += twiceDx;
-        checkTouchBrick(dx, dy, bonus, x, y, twiceDx, twiceDy, twiceX, twiceY, move_block_active, twiceBall,
+        firstBall.x += firstBall.dx;
+        secondBall.x+= secondBall.dx;
+        checkTouchBrick(firstBall, bonus, secondBall, moveBlockActive, twiceBall,
                         blocks);
-        checkTouchBrick(dx, dy, bonus, x, y, twiceDx, twiceDy, twiceX, twiceY, move_block_active, twiceBall, tmp);
-        checkTouchBall(x, y, dx, dy, twiceX, twiceY, twiceDx, twiceDy, sBall2);
-        y += dy;
-        twiceY += twiceDy;
-        checkTouchBrick(dy, dx, bonus, x, y, twiceDy, twiceDx, twiceX, twiceY, move_block_active, twiceBall,
+        checkTouchBrick(firstBall, bonus, secondBall, moveBlockActive, twiceBall, moveBlocks);
+        firstBall.axis='y';
+        secondBall.axis='y';
+        checkTouchBall(firstBall, secondBall, sBall2);
+        firstBall.y += firstBall.dy;
+        secondBall.y += secondBall.dy;
+        checkTouchBrick(firstBall, bonus, secondBall, moveBlockActive, twiceBall,
                         blocks);
-        checkTouchBrick(dy, dx, bonus, x, y, twiceDy, twiceDx, twiceX, twiceY, move_block_active, twiceBall, tmp);
-        checkTouchBall(x, y, dx, dy, twiceX, twiceY, twiceDx, twiceDy, sBall2);
-        checkLine(x, y, dx, dy, WIGHT, HEIGHT, app);
-        checkLine(twiceX, twiceY, twiceDx, twiceDy, WIGHT, HEIGHT, app);
+        checkTouchBrick(firstBall, bonus, secondBall, moveBlockActive, twiceBall, moveBlocks);
+        firstBall.axis='x';
+        secondBall.axis='x';
+        checkTouchBall(firstBall, secondBall, sBall2);
+        checkLine(firstBall, WIGHT, HEIGHT, app);
+        checkLine(secondBall, WIGHT, HEIGHT, app);
         if (Keyboard::isKeyPressed(Keyboard::Right)) sPaddle.move(pladeSpeed, 0);
         if (Keyboard::isKeyPressed(Keyboard::Left)) sPaddle.move(-pladeSpeed, 0);
         if (Keyboard::isKeyPressed(Keyboard::Escape)) app.close();
         if (Keyboard::isKeyPressed(Keyboard::Space) || start) {
             start = false;
-            swap(dx, stopDx);
-            swap(dy, stopDy);
-            swap(twiceDx, stopTwiceDx);
-            swap(twiceDy, stopTwiceDy);
+            swap(firstBall.dx, stopDx);
+            swap(firstBall.dy, stopDy);
+            swap(secondBall.dx, stopTwiceDx);
+            swap(secondBall.dy, stopTwiceDy);
             swap(pladeSpeed, stopPladeSpeed);
         }
-        checkTouchPaddle(x, y, dx, dy, sPaddle);
-        checkTouchPaddle(twiceX, twiceY, twiceDx, twiceDy, sPaddle);
-        sBall.setPosition(x, y);
+        checkTouchPaddle(firstBall, sPaddle);
+        checkTouchPaddle(secondBall, sPaddle);
+        sBall.setPosition(firstBall.x, firstBall.y);
         app.clear();
         app.draw(sBackground);
         app.draw(sBall);
         app.draw(sPaddle);
         app.draw(bonus);
-        checkBonus(bonus, x, y, twiceBall);
-        checkBonus(bonus, twiceX, twiceY, twiceBall);
-        if (move_block_active) {
+        checkBonus(bonus, firstBall, twiceBall);
+        checkBonus(bonus, secondBall, twiceBall);
+        if (moveBlockActive) {
             moveBlock->move(0.5, 0);
             app.draw(*moveBlock);
             if (moveBlock->getGlobalBounds().left > WIGHT)
                 moveBlock->setPosition(-43, 220);
         }
         if (twiceBall) {
-            sBall2.setPosition(twiceX, twiceY);
+            sBall2.setPosition(secondBall.x, secondBall.y);
             app.draw(sBall2);
         } else {
-            twiceX = 260;
-            twiceY = 250;
-            twiceDx = 0;
-            twiceDy = 0;
+            secondBall.x = 260;
+            secondBall.y = 250;
+            secondBall.dx= 0;
+            secondBall.dy = 0;
         }
         for (int i = 0; i < blocks.size(); i++)
             app.draw(*blocks[i]);
